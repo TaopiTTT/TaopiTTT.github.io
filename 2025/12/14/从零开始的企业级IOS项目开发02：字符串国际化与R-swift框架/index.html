@@ -19,24 +19,22 @@
   <meta name="author" content="TaopiTTT">
   <meta name="keywords" content="">
   
-    <meta name="description" content="项目简介既然是从零开始的第一集，那当然要先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic，觉得不错的可以给个Star～ 正片在此为什么选用TangramK">
+    <meta name="description" content="正文在此字符串国际化为了给不同地区的用户做适配，通常项目中需要包含多种语言包，用于显示应用层面的部分提示。至于应用获取到的内容的语言则由后端服务器决定，因此我们只需要对应用可能出现的提示词做国际化即可。 具体步骤如下： 向项目中添加需要支持的语言 在左侧导航栏点击项目根目录。 在右侧主界面选择 PROJECT。 点击上面的 Info 标签页。 找到 Localizations 区域。 点击 + 号">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从零开始的企业级IOS项目开发01：TangramKit的使用">
-<meta property="og:url" content="https://taopittt.github.io/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架">
+<meta property="og:url" content="https://taopittt.github.io/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9102%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9B%BD%E9%99%85%E5%8C%96%E4%B8%8ER-swift%E6%A1%86%E6%9E%B6/index.html">
 <meta property="og:site_name" content="TaopiTTT的博客">
-<meta property="og:description" content="项目简介既然是从零开始的第一集，那当然要先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic，觉得不错的可以给个Star～ 正片在此为什么选用TangramK">
+<meta property="og:description" content="正文在此字符串国际化为了给不同地区的用户做适配，通常项目中需要包含多种语言包，用于显示应用层面的部分提示。至于应用获取到的内容的语言则由后端服务器决定，因此我们只需要对应用可能出现的提示词做国际化即可。 具体步骤如下： 向项目中添加需要支持的语言 在左侧导航栏点击项目根目录。 在右侧主界面选择 PROJECT。 点击上面的 Info 标签页。 找到 Localizations 区域。 点击 + 号">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://taopittt.github.io/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/Pro01_1.png">
-<meta property="article:published_time" content="2025-12-14T07:13:21.000Z">
-<meta property="article:modified_time" content="2025-12-14T08:08:42.143Z">
+<meta property="article:published_time" content="2025-12-14T08:06:28.000Z">
+<meta property="article:modified_time" content="2025-12-14T08:31:39.403Z">
 <meta property="article:author" content="TaopiTTT">
 <meta property="article:tag" content="IOS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://taopittt.github.io/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/Pro01_1.png">
   
   
   
-  <title>从零开始的企业级IOS项目开发01：TangramKit的使用 - TaopiTTT的博客</title>
+  <title>从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架 - TaopiTTT的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="从零开始的企业级IOS项目开发01：TangramKit的使用"></span>
+            <span id="subtitle" data-typed-text="从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架"></span>
           
         </div>
 
@@ -213,7 +211,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-14 15:13" pubdate>
+        <time datetime="2025-12-14 16:06" pubdate>
           2025年12月14日 下午
         </time>
       </span>
@@ -225,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          488 字
+          543 字
         
       </span>
     
@@ -273,24 +271,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">从零开始的企业级IOS项目开发01：TangramKit的使用</h1>
+            <h1 id="seo-header">从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h1><p>既然是从零开始的第一集，那当然要先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。</p>
-<h1 id="项目仓库"><a href="#项目仓库" class="headerlink" title="项目仓库"></a>项目仓库</h1><p>项目进度已公开在Github上，地址<a target="_blank" rel="noopener" href="https://github.com/TaopiTTT/MyCloudMusic%EF%BC%8C%E8%A7%89%E5%BE%97%E4%B8%8D%E9%94%99%E7%9A%84%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%B8%AAStar%EF%BD%9E">https://github.com/TaopiTTT/MyCloudMusic，觉得不错的可以给个Star～</a></p>
-<h1 id="正片在此"><a href="#正片在此" class="headerlink" title="正片在此"></a>正片在此</h1><h2 id="为什么选用TangramKit"><a href="#为什么选用TangramKit" class="headerlink" title="为什么选用TangramKit"></a>为什么选用TangramKit</h2><p>众所周知，IOS开发中最为广泛使用的布局库莫过于<strong>SnapKit</strong>，是基于Auto Layuot的语法糖，旨在让布局写起来更加简单。但由于是对原生Auto Layout的封装，因此在面对大规模布局同时采用纯代码构建时会显得代码非常冗长并且不好修改。<br></p>
-<p>因而为了简化布局的繁琐步骤，本次项目将采用TangramKit，核心优势就是采用<strong>布局容器</strong>，即自定义一个container，并将所有子视图放入容器中。届时，容器将会自动计算Frame并采用自动布局，减少我们的代码量。</p>
-<h2 id="TangramKit快速上手"><a href="#TangramKit快速上手" class="headerlink" title="TangramKit快速上手"></a>TangramKit快速上手</h2><p>首先需要安装TangramKit，直接采用Cocoapod包管理器即可，在podfile中添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pod <span class="hljs-string">&#x27;TangramKit&#x27;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="正文在此"><a href="#正文在此" class="headerlink" title="正文在此"></a>正文在此</h1><h2 id="字符串国际化"><a href="#字符串国际化" class="headerlink" title="字符串国际化"></a>字符串国际化</h2><p>为了给不同地区的用户做适配，通常项目中需要包含多种语言包，用于显示应用层面的部分提示。至于应用获取到的内容的语言则由后端服务器决定，因此我们只需要对应用可能出现的提示词做国际化即可。<br></p>
+<p>具体步骤如下：</p>
+<h3 id="向项目中添加需要支持的语言"><a href="#向项目中添加需要支持的语言" class="headerlink" title="向项目中添加需要支持的语言"></a>向项目中添加需要支持的语言</h3><ol>
+<li>在左侧导航栏点击<strong>项目根目录</strong>。</li>
+<li>在右侧主界面选择 <strong>PROJECT</strong>。</li>
+<li>点击上面的 <strong>Info</strong> 标签页。</li>
+<li>找到 <strong>Localizations</strong> 区域。</li>
+<li>点击 <strong>+</strong> 号，选择想要支持的语言（例如：<code>Chinese, Simplified</code> 简体中文）。</li>
+</ol>
+<h3 id="创建Localizable-strings文件"><a href="#创建Localizable-strings文件" class="headerlink" title="创建Localizable.strings文件"></a>创建<code>Localizable.strings</code>文件</h3><ol>
+<li>在左侧文件导航栏，右键点击根目录 -&gt; <strong>New File…</strong></li>
+<li>在搜索框输入 “strings”，选择 <strong>Strings File</strong>，创建即可。</li>
+<li>注意要将文件命名为 <strong><code>Localizable.strings</code></strong>（非必要不要变化文件名）。</li>
+</ol>
+<p>注意，创建文件后要在右侧<strong>File Inspector</strong>处勾选需要的文件，此时导航栏中将出现若干个子文件，对应的是不同语言的字符串。</p>
+<h3 id="填写翻译内容"><a href="#填写翻译内容" class="headerlink" title="填写翻译内容"></a>填写翻译内容</h3><p>例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">//网络相关_en</span><br><span class="hljs-type">ErrorNetworkUnknownHost</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Server not found&quot;</span>;<br><span class="hljs-type">ErrorNetworkConnect</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Failed to connect to the server&quot;</span>;<br><span class="hljs-type">ErrorNetworkTimeout</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Connection server timeout&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotAuth</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Login information expired&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotPermission</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;You do not have permission to access&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotFound</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;The content you accessed does not exist&quot;</span>;<br></code></pre></td></tr></table></figure>
 
-<p>TangramKit原仓库地址为：<a target="_blank" rel="noopener" href="https://github.com/youngsoft/TangramKit">https://github.com/youngsoft/TangramKit</a> <br></p>
-<p>这里给出一个示例，来体验容器的自动布局。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">override</span> <span class="hljs-keyword">func</span> <span class="hljs-title function_">viewDidLoad</span>() &#123;<br>    <span class="hljs-keyword">super</span>.viewDidLoad()<br>    view.backgroundColor <span class="hljs-operator">=</span> .colorBackground<br><br>    <span class="hljs-comment">// 创建一个相对容器</span><br>    <span class="hljs-keyword">let</span> container <span class="hljs-operator">=</span> <span class="hljs-type">TGRelativeLayout</span>()<br><br>    <span class="hljs-comment">//从安全区开始</span><br>    container.tg_top.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_leading.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_trailing.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_bottom.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    view.addSubview(container)<br><br>    <span class="hljs-comment">// LOGO</span><br>    <span class="hljs-keyword">let</span> logoView <span class="hljs-operator">=</span> <span class="hljs-type">UIImageView</span>(image: <span class="hljs-type">R</span>.image.splashLogo())<br>    logoView.tg_width.equal(<span class="hljs-number">188</span>)<br>    logoView.tg_height.equal(<span class="hljs-number">31</span>)<br>    logoView.tg_bottom.equal(copyrightView.tg_top).offset(<span class="hljs-number">16</span>)<br>    logoView.tg_centerX.equal(<span class="hljs-number">0</span>)<br>    logoView.contentMode <span class="hljs-operator">=</span> .scaleAspectFill<br>    container.addSubview(logoView)<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">//网络相关_zh</span><br><span class="hljs-type">ErrorNetworkUnknownHost</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;找不到服务器&quot;</span>;<br><span class="hljs-type">ErrorNetworkConnect</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;连接服务器失败&quot;</span>;<br><span class="hljs-type">ErrorNetworkTimeout</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;连接服务器超时&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotAuth</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;登录信息过期&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotPermission</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;你没有权限访问&quot;</span>;<br><span class="hljs-type">ErrorNetworkNotFound</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;你访问的内容不存在&quot;</span>;<br></code></pre></td></tr></table></figure>
 
-<p>通过上面的代码，可以轻松实现安全区的布局(下图中采用灰色进行范围展示)，并且可以方便地基于安全区展示子视图。</p>
-<img src="/2025/12/14/从零开始的企业级IOS项目开发01：TangramKit的使用/Pro01_1.png" srcset="/img/loading.gif" lazyload  alt="布局样例" style="zoom:30%;"/>
+<h3 id="对应用名称国际化"><a href="#对应用名称国际化" class="headerlink" title="对应用名称国际化"></a>对应用名称国际化</h3><p>创建<code>InfoPlist.strings</code>文件，内容为：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// zh</span><br><span class="hljs-type">CFBundleName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Taopi云音乐&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// en</span><br><span class="hljs-type">CFBundleName</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;CloudMusic&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="R-swift的使用"><a href="#R-swift的使用" class="headerlink" title="R.swift的使用"></a>R.swift的使用</h2><h3 id="能干啥"><a href="#能干啥" class="headerlink" title="能干啥"></a>能干啥</h3><p> 能将资源（图片，文件等）生成类，更方便书写代码，例如：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> icon <span class="hljs-operator">=</span> <span class="hljs-type">R</span>.image.settingsIcon()<br><span class="hljs-keyword">let</span> font <span class="hljs-operator">=</span> <span class="hljs-type">R</span>.font.sanFrancisco(size: <span class="hljs-number">42</span>)<br><span class="hljs-keyword">let</span> color <span class="hljs-operator">=</span> <span class="hljs-type">R</span>.color.indicatorHighlight()<br><span class="hljs-keyword">let</span> viewController <span class="hljs-operator">=</span> <span class="hljs-type">CustomViewController</span>(nib: <span class="hljs-type">R</span>.nib.customView)<br><span class="hljs-keyword">let</span> string <span class="hljs-operator">=</span> <span class="hljs-type">R</span>.string.localizable.welcomeWithName(<span class="hljs-string">&quot;Arthur Dent&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>方便访问如上面提到的应用内通知、应用图片资源或是自定义的颜色信息。</p>
+<h3 id="怎么开始"><a href="#怎么开始" class="headerlink" title="怎么开始"></a>怎么开始</h3><p>依然是pod安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pod <span class="hljs-string">&#x27;R.swift&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>安装后需要进行一定配置，请根据官方文档进行，原仓库地址为<a target="_blank" rel="noopener" href="https://github.com/mac-cain13/R.swift">https://github.com/mac-cain13/R.swift</a></p>
 
                 
               </div>
@@ -315,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>从零开始的企业级IOS项目开发01：TangramKit的使用</div>
-      <div>https://taopittt.github.io/2025/12/14/从零开始的企业级IOS项目开发01：TangramKit的使用/</div>
+      <div>从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架</div>
+      <div>https://taopittt.github.io/2025/12/14/从零开始的企业级IOS项目开发02：字符串国际化与R-swift框架/</div>
     </div>
     <div class="license-meta">
       
@@ -360,18 +380,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9102%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9B%BD%E9%99%85%E5%8C%96%E4%B8%8ER-swift%E6%A1%86%E6%9E%B6/" title="从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从零开始的企业级IOS项目开发02：字符串国际化与R.swift框架</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/11/21/%E4%BB%8E%E4%B8%80%E5%A0%86Demo%E4%B8%AD%E5%AD%A6%E5%88%B0%E7%9A%84IOS%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/" title="从一堆Demo中学到的IOS开发知识">
-                        <span class="hidden-mobile">从一堆Demo中学到的IOS开发知识</span>
+                      <a href="/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/" title="从零开始的企业级IOS项目开发01：TangramKit的使用">
+                        <span class="hidden-mobile">从零开始的企业级IOS项目开发01：TangramKit的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
