@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>从零开始的企业级IOS项目开发01：TangramKit的使用</title>
+    <link href="/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <url>/2025/12/14/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7IOS%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%9101%EF%BC%9ATangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h1><p>既然是从零开始的第一集，那当然要先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。</p><h1 id="项目仓库"><a href="#项目仓库" class="headerlink" title="项目仓库"></a>项目仓库</h1><p>项目进度已公开在Github上，地址<a href="https://github.com/TaopiTTT/MyCloudMusic%EF%BC%8C%E8%A7%89%E5%BE%97%E4%B8%8D%E9%94%99%E7%9A%84%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%B8%AAStar%EF%BD%9E">https://github.com/TaopiTTT/MyCloudMusic，觉得不错的可以给个Star～</a></p><h1 id="正片在此"><a href="#正片在此" class="headerlink" title="正片在此"></a>正片在此</h1><h2 id="为什么选用TangramKit"><a href="#为什么选用TangramKit" class="headerlink" title="为什么选用TangramKit"></a>为什么选用TangramKit</h2><p>众所周知，IOS开发中最为广泛使用的布局库莫过于<strong>SnapKit</strong>，是基于Auto Layuot的语法糖，旨在让布局写起来更加简单。但由于是对原生Auto Layout的封装，因此在面对大规模布局同时采用纯代码构建时会显得代码非常冗长并且不好修改。<br></p><p>因而为了简化布局的繁琐步骤，本次项目将采用TangramKit，核心优势就是采用<strong>布局容器</strong>，即自定义一个container，并将所有子视图放入容器中。届时，容器将会自动计算Frame并采用自动布局，减少我们的代码量。</p><h2 id="TangramKit快速上手"><a href="#TangramKit快速上手" class="headerlink" title="TangramKit快速上手"></a>TangramKit快速上手</h2><p>这里给出一个示例，来体验容器的自动布局。</p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">override</span> <span class="hljs-keyword">func</span> <span class="hljs-title function_">viewDidLoad</span>() &#123;<br>    <span class="hljs-keyword">super</span>.viewDidLoad()<br>    view.backgroundColor <span class="hljs-operator">=</span> .colorBackground<br><br>    <span class="hljs-comment">// 创建一个相对容器</span><br>    <span class="hljs-keyword">let</span> container <span class="hljs-operator">=</span> <span class="hljs-type">TGRelativeLayout</span>()<br><br>    <span class="hljs-comment">//从安全区开始</span><br>    container.tg_top.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_leading.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_trailing.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    container.tg_bottom.equal(<span class="hljs-type">TGLayoutPos</span>.tg_safeAreaMargin)<br>    view.addSubview(container)<br><br>    <span class="hljs-comment">// LOGO</span><br>    <span class="hljs-keyword">let</span> logoView <span class="hljs-operator">=</span> <span class="hljs-type">UIImageView</span>(image: <span class="hljs-type">R</span>.image.splashLogo())<br>    logoView.tg_width.equal(<span class="hljs-number">188</span>)<br>    logoView.tg_height.equal(<span class="hljs-number">31</span>)<br>    logoView.tg_bottom.equal(copyrightView.tg_top).offset(<span class="hljs-number">16</span>)<br>    logoView.tg_centerX.equal(<span class="hljs-number">0</span>)<br>    logoView.contentMode <span class="hljs-operator">=</span> .scaleAspectFill<br>    container.addSubview(logoView)<br>&#125;<br></code></pre></td></tr></table></figure><p>通过上面的代码，可以轻松实现安全区的布局(下图中采用灰色进行范围展示)，并且可以方便地基于安全区展示子视图。</p><img src="/2025/12/14/从零开始的企业级IOS项目开发01：TangramKit的使用/Pro01_1.png"  alt="布局样例" style="zoom:30%;"/>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>IOS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>从一堆Demo中学到的IOS开发知识</title>
     <link href="/2025/11/21/%E4%BB%8E%E4%B8%80%E5%A0%86Demo%E4%B8%AD%E5%AD%A6%E5%88%B0%E7%9A%84IOS%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/"/>
     <url>/2025/11/21/%E4%BB%8E%E4%B8%80%E5%A0%86Demo%E4%B8%AD%E5%AD%A6%E5%88%B0%E7%9A%84IOS%E5%BC%80%E5%8F%91%E7%9F%A5%E8%AF%86/</url>
@@ -14,7 +33,7 @@
     
     <tags>
       
-      <tag>开发，swift</tag>
+      <tag>Demo</tag>
       
     </tags>
     
