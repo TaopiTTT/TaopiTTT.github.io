@@ -19,22 +19,22 @@
   <meta name="author" content="TaopiTTT">
   <meta name="keywords" content="">
   
-    <meta name="description" content="正文在此统一项目中的所有颜色项目中可能会用到相当多的颜色设置，因此可以创建一个Config文件夹专门用于存放全局变量，方便日后的修改。而对于颜色的定义，则可以用DynamicColor库进行管理，可以使用十六进制数进行定义，免于传统RGB的定义。 12# https:&#x2F;&#x2F;github.com&#x2F;yannickl&#x2F;DynamicColorpod &quot;DynamicColor&quot;  统一">
+    <meta name="description" content="iOS 中的 Runloop本质：RunLoop是一个**事件循环机制，用于管理线程中的事件和消息。**它允许线程在没有任务的情况下休眠，并在有任务需要处理时唤醒线程。作用：  处理输入源：RunLoop负责处理输入源，包括用户界面事件、触摸事件、定时器事件、网络事件等，通过RunLoop能够有效地处理这些事件，让应用程序的响应更加及时。 保持线程活动（线程保活）：RunLoop能够保持线程活动，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统一颜色管理与黑夜模式适配">
-<meta property="og:url" content="https://taopittt.github.io/2025/12/14/%E7%BB%9F%E4%B8%80%E9%A2%9C%E8%89%B2%E7%AE%A1%E7%90%86%E4%B8%8E%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/index.html">
+<meta property="og:title" content="浅谈：RunLoop">
+<meta property="og:url" content="https://taopittt.github.io/2025/12/18/%E6%B5%85%E8%B0%88%EF%BC%9ARunLoop/index.html">
 <meta property="og:site_name" content="TaopiTTT的博客">
-<meta property="og:description" content="正文在此统一项目中的所有颜色项目中可能会用到相当多的颜色设置，因此可以创建一个Config文件夹专门用于存放全局变量，方便日后的修改。而对于颜色的定义，则可以用DynamicColor库进行管理，可以使用十六进制数进行定义，免于传统RGB的定义。 12# https:&#x2F;&#x2F;github.com&#x2F;yannickl&#x2F;DynamicColorpod &quot;DynamicColor&quot;  统一">
+<meta property="og:description" content="iOS 中的 Runloop本质：RunLoop是一个**事件循环机制，用于管理线程中的事件和消息。**它允许线程在没有任务的情况下休眠，并在有任务需要处理时唤醒线程。作用：  处理输入源：RunLoop负责处理输入源，包括用户界面事件、触摸事件、定时器事件、网络事件等，通过RunLoop能够有效地处理这些事件，让应用程序的响应更加及时。 保持线程活动（线程保活）：RunLoop能够保持线程活动，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-14T08:36:12.000Z">
-<meta property="article:modified_time" content="2026-01-13T09:45:43.761Z">
+<meta property="article:published_time" content="2025-12-18T09:27:27.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:29:38.190Z">
 <meta property="article:author" content="TaopiTTT">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>统一颜色管理与黑夜模式适配 - TaopiTTT的博客</title>
+  <title>浅谈：RunLoop - TaopiTTT的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="统一颜色管理与黑夜模式适配"></span>
+            <span id="subtitle" data-typed-text="浅谈：RunLoop"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-14 16:36" pubdate>
-          2025年12月14日 下午
+        <time datetime="2025-12-18 17:27" pubdate>
+          2025年12月18日 下午
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          283 字
+          325 字
         
       </span>
     
@@ -271,20 +271,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">统一颜色管理与黑夜模式适配</h1>
+            <h1 id="seo-header">浅谈：RunLoop</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="正文在此"><a href="#正文在此" class="headerlink" title="正文在此"></a>正文在此</h1><h2 id="统一项目中的所有颜色"><a href="#统一项目中的所有颜色" class="headerlink" title="统一项目中的所有颜色"></a>统一项目中的所有颜色</h2><p>项目中可能会用到相当多的颜色设置，因此可以创建一个Config文件夹专门用于存放全局变量，方便日后的修改。而对于颜色的定义，则可以用<strong>DynamicColor</strong>库进行管理，可以使用十六进制数进行定义，免于传统RGB的定义。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># https://github.com/yannickl/DynamicColor</span><br>pod <span class="hljs-string">&quot;DynamicColor&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>统一颜色模板：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">/// 主色调</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> primaryColor: <span class="hljs-type">UIColor</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-type">DynamicColor</span>(hex: <span class="hljs-number">0xd6271c</span>)&#125;<br><br><span class="hljs-comment">/// 暗一点 主色调</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> primary30 : <span class="hljs-type">UIColor</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-type">DynamicColor</span>(hex: <span class="hljs-number">0xa92e29</span>)&#125;<br><br><span class="hljs-comment">/// 链接颜色</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> link : <span class="hljs-type">UIColor</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-type">DynamicColor</span>(hex: <span class="hljs-number">0x2440b3</span>)&#125;<br><br><span class="hljs-comment">/// 主色调，暗一点按钮颜色</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> primaryButton : <span class="hljs-type">UIColor</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-type">DynamicColor</span>(hex: <span class="hljs-number">0x596c94</span>)&#125;<br><br><span class="hljs-comment">/// vip金色</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> vipBorder : <span class="hljs-type">UIColor</span> &#123;<span class="hljs-keyword">return</span> <span class="hljs-type">DynamicColor</span>(hex: <span class="hljs-number">0xc4b2ad</span>)&#125;<br><br></code></pre></td></tr></table></figure>
-
-<h2 id="黑夜模式适配"><a href="#黑夜模式适配" class="headerlink" title="黑夜模式适配"></a>黑夜模式适配</h2><p>在IOS13以后，iPhone支持了黑夜模式。但是在黑夜模式下字体的颜色需要重新适配，这时候我们可以通过提前定义好黑夜模式下的字体颜色，并通过以下函数，便可以自动进行切换。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">static</span> <span class="hljs-keyword">func</span> <span class="hljs-title function_">initColor</span>(<span class="hljs-params">normal</span>:<span class="hljs-type">UIColor</span>,<span class="hljs-params">dark</span>:<span class="hljs-type">UIColor</span>) -&gt; <span class="hljs-type">UIColor</span> &#123;<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">#available</span>(<span class="hljs-keyword">iOS</span> <span class="hljs-number">13.0</span>, <span class="hljs-operator">*</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-type">UIColor</span> &#123; (traitCollection) -&gt; <span class="hljs-type">UIColor</span> <span class="hljs-keyword">in</span><br>            <span class="hljs-keyword">return</span> traitCollection.userInterfaceStyle <span class="hljs-operator">==</span> .dark <span class="hljs-operator">?</span> dark : normal<br>        &#125;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-comment">//用浅色</span><br>        <span class="hljs-keyword">return</span> normal<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+                <h2 id="iOS-中的-Runloop"><a href="#iOS-中的-Runloop" class="headerlink" title="iOS 中的 Runloop"></a>iOS 中的 Runloop</h2><p>本质：RunLoop是一个**事件循环机制，用于管理线程中的事件和消息。**它允许线程在没有任务的情况下休眠，并在有任务需要处理时唤醒线程。<br>作用：</p>
+<ul>
+<li><strong>处理输入源</strong>：RunLoop负责处理输入源，包括用户界面事件、触摸事件、定时器事件、网络事件等，通过RunLoop能够有效地处理这些事件，让应用程序的响应更加及时。</li>
+<li><strong>保持线程活动</strong>（线程保活）：RunLoop能够保持线程活动，即使在没有任务时，RunLoop也会让线程休眠而不会退出，以便随时处理来自输入源的事件。</li>
+<li><strong>定时器功能</strong>：RunLoop提供了一些定时器功能，例如延迟执行和重复执行某个任务。通过定时器功能，可以很方便地在指定时间执行任务。</li>
+<li><strong>优化性能</strong>：RunLoop能够优化应用程序的性能，通过RunLoop能够让应用程序在有任务需要处理时及时唤醒线程，而在没有任务时让线程休眠，从而避免了线程的空转，减少了CPU的占用，提高了应用程序的性能。</li>
+</ul>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ScheenDuan/article/details/142579145?spm=1001.2014.3001.5502">https://blog.csdn.net/ScheenDuan/article/details/142579145?spm=1001.2014.3001.5502</a></p>
 
                 
               </div>
@@ -309,8 +308,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>统一颜色管理与黑夜模式适配</div>
-      <div>https://taopittt.github.io/2025/12/14/统一颜色管理与黑夜模式适配/</div>
+      <div>浅谈：RunLoop</div>
+      <div>https://taopittt.github.io/2025/12/18/浅谈：RunLoop/</div>
     </div>
     <div class="license-meta">
       
@@ -322,7 +321,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月14日</div>
+          <div>2025年12月18日</div>
         </div>
       
       
@@ -354,9 +353,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/18/%E6%B5%85%E8%B0%88%EF%BC%9ARunLoop/" title="浅谈：RunLoop">
+                      <a href="/2025/12/20/%E6%B5%85%E8%B0%88%EF%BC%9AiOS%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="浅谈：iOS的内存管理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浅谈：RunLoop</span>
+                        <span class="hidden-mobile">浅谈：iOS的内存管理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -364,8 +363,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/13/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9B%BD%E9%99%85%E5%8C%96%E4%B8%8ER-swift%E6%A1%86%E6%9E%B6/" title="字符串国际化与R.swift框架">
-                        <span class="hidden-mobile">字符串国际化与R.swift框架</span>
+                      <a href="/2025/12/14/%E7%BB%9F%E4%B8%80%E9%A2%9C%E8%89%B2%E7%AE%A1%E7%90%86%E4%B8%8E%E9%BB%91%E5%A4%9C%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D/" title="统一颜色管理与黑夜模式适配">
+                        <span class="hidden-mobile">统一颜色管理与黑夜模式适配</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
