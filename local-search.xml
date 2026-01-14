@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>oh my zsh打造好看好用的终端界面</title>
+    <link href="/2026/01/14/zsh%E6%89%93%E9%80%A0%E5%A5%BD%E7%9C%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BB%88%E7%AB%AF%E7%95%8C%E9%9D%A2/"/>
+    <url>/2026/01/14/zsh%E6%89%93%E9%80%A0%E5%A5%BD%E7%9C%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BB%88%E7%AB%AF%E7%95%8C%E9%9D%A2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>使用zsh+oh my zsh可以打造如下图的美观好用的终端界面：<img src="/2026/01/14/zsh%E6%89%93%E9%80%A0%E5%A5%BD%E7%9C%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BB%88%E7%AB%AF%E7%95%8C%E9%9D%A2/zsh%E9%A2%84%E8%A7%88.png" class="" title="zsh"></p><p>配置参考文档：<a href="https://blog.csdn.net/a143730/article/details/135573409">https://blog.csdn.net/a143730/article/details/135573409</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>zsh</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RxSwift入门</title>
     <link href="/2026/01/10/RxSwift%E5%85%A5%E9%97%A8/"/>
     <url>/2026/01/10/RxSwift%E5%85%A5%E9%97%A8/</url>
