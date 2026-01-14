@@ -19,16 +19,16 @@
   <meta name="author" content="TaopiTTT">
   <meta name="keywords" content="">
   
-    <meta name="description" content="项目简介接下来的一些博客我都将介绍一些在一个企业级项目中学到的东西，开始之前先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic，觉得不错的可以给个Star～">
+    <meta name="description" content="项目简介接下来的一些博客我都将介绍一些在一个企业级项目中学到的东西，开始之前先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址 https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic ，觉得不错的可以给个Sta">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TangramKit的使用">
 <meta property="og:url" content="https://taopittt.github.io/2025/12/12/TangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="TaopiTTT的博客">
-<meta property="og:description" content="项目简介接下来的一些博客我都将介绍一些在一个企业级项目中学到的东西，开始之前先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic，觉得不错的可以给个Star～">
+<meta property="og:description" content="项目简介接下来的一些博客我都将介绍一些在一个企业级项目中学到的东西，开始之前先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。 项目仓库项目进度已公开在Github上，地址 https:&#x2F;&#x2F;github.com&#x2F;TaopiTTT&#x2F;MyCloudMusic ，觉得不错的可以给个Sta">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://taopittt.github.io/2025/12/12/TangramKit%E7%9A%84%E4%BD%BF%E7%94%A8/Pro01_1.png">
 <meta property="article:published_time" content="2025-12-12T07:13:21.000Z">
-<meta property="article:modified_time" content="2026-01-13T09:45:30.972Z">
+<meta property="article:modified_time" content="2026-01-14T12:28:39.908Z">
 <meta property="article:author" content="TaopiTTT">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary_large_image">
@@ -279,7 +279,7 @@
               <div class="markdown-body">
                 
                 <h1 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h1><p>接下来的一些博客我都将介绍一些在一个企业级项目中学到的东西，开始之前先介绍一下整个项目的规划。我的项目初衷是基于市面上主流的音乐软件而仿造的在线音乐播放器。能支持线上播放、下载音乐，创建歌单，发布与回复评论，同时还集成了应用内聊天功能。</p>
-<h1 id="项目仓库"><a href="#项目仓库" class="headerlink" title="项目仓库"></a>项目仓库</h1><p>项目进度已公开在Github上，地址<a target="_blank" rel="noopener" href="https://github.com/TaopiTTT/MyCloudMusic%EF%BC%8C%E8%A7%89%E5%BE%97%E4%B8%8D%E9%94%99%E7%9A%84%E5%8F%AF%E4%BB%A5%E7%BB%99%E4%B8%AAStar%EF%BD%9E">https://github.com/TaopiTTT/MyCloudMusic，觉得不错的可以给个Star～</a></p>
+<h1 id="项目仓库"><a href="#项目仓库" class="headerlink" title="项目仓库"></a>项目仓库</h1><p>项目进度已公开在Github上，地址 <a target="_blank" rel="noopener" href="https://github.com/TaopiTTT/MyCloudMusic">https://github.com/TaopiTTT/MyCloudMusic</a> ，觉得不错的可以给个Star～</p>
 <h1 id="正片在此"><a href="#正片在此" class="headerlink" title="正片在此"></a>正片在此</h1><h2 id="为什么选用TangramKit"><a href="#为什么选用TangramKit" class="headerlink" title="为什么选用TangramKit"></a>为什么选用TangramKit</h2><p>众所周知，IOS开发中最为广泛使用的布局库莫过于<strong>SnapKit</strong>，是基于Auto Layuot的语法糖，旨在让布局写起来更加简单。但由于是对原生Auto Layout的封装，因此在面对大规模布局同时采用纯代码构建时会显得代码非常冗长并且不好修改。<br></p>
 <p>因而为了简化布局的繁琐步骤，本次项目将采用TangramKit，核心优势就是采用<strong>布局容器</strong>，即自定义一个container，并将所有子视图放入容器中。届时，容器将会自动计算Frame并采用自动布局，减少我们的代码量。</p>
 <h2 id="TangramKit快速上手"><a href="#TangramKit快速上手" class="headerlink" title="TangramKit快速上手"></a>TangramKit快速上手</h2><p>首先需要安装TangramKit，直接采用Cocoapod包管理器即可，在podfile中添加</p>
